@@ -16,6 +16,7 @@ numbers.forEach((number) => {
 let prevNumber = '';
 let calculationOperator = '';
 let currentNumber = '0';
+const currentDisplay = [];
 
 const inputNumber = (number) => {
     if(currentNumber === '0') {
@@ -69,15 +70,15 @@ const calculate = () => {
     currentNumber = result;
     calculationOperator = '';
 }
-
+        
 const clearAll = () => {
     prevNumber = '';
     calculationOperator = '';
     currentNumber = '0';
 }
-
+    
 const clearBtn = document.querySelector('.all-clear');
-
+    
 clearBtn.addEventListener('click', () => {
     clearAll();
     updateScreen(currentNumber);
@@ -95,4 +96,19 @@ const inputDecimal = (dot) => {
         return
     }
     currentNumber += dot;
+}
+
+const percent = document.querySelector('.percentage');
+
+percent.addEventListener('click', (event) => {
+    inputPercent(event.target.value);
+    updateScreen(currentNumber);
+})
+
+const inputPercent = (percentage) => {
+    console.log(percentage);
+    if(currentNumber.includes(percentage)){
+        return
+    }
+    currentNumber = parseInt(currentNumber) / 100;
 }
