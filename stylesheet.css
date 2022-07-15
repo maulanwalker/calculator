@@ -28,11 +28,10 @@ body, html {
 }
 
 .calculator-keys {
-    width: 100%;
-}
-
-.row {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 8px;
+    padding: 8px 0;
 }
 
 button {
@@ -40,7 +39,6 @@ button {
     background-color: #ebecf0;
     font-size: 32px;
     color: gray;
-    width: 25%;
     outline: none;
     margin: 6px;
     border-radius: 8px;
@@ -56,7 +54,8 @@ button:active {
 }
 
 .all-clear, .zero-btn {
-    width: 50%;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
 .operator, .equal-sign {
