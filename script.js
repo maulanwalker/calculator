@@ -45,8 +45,18 @@ const inputOperator = (operator) => {
 const equalSign = document.querySelector('.equal-sign');
 
 equalSign.addEventListener('click', () => {
-    calculate();
-    updateScreen(currentNumber);
+    if(calculationOperator !== '' && prevNumber !== '' && currentNumber !== ''){
+        calculate();
+        updateScreen(currentNumber);
+    }else{
+        if(prevNumber !== ''){
+            if(calculationOperator === ''){
+                updateScreen(currentNumber);
+            }else{
+                updateScreen(prevNumber);
+            }
+        }
+    }
 })
 
 const calculate = () => {
@@ -106,7 +116,6 @@ percent.addEventListener('click', (event) => {
 })
 
 const inputPercent = (percentage) => {
-    console.log(percentage);
     if(currentNumber.includes(percentage)){
         return
     }
